@@ -7,19 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Chosen Palette: Warm Premium Neutrals (Off-White #fcfaf8, Charcoal #2d2a26, Champagne Gold #b8905d, Stone #f5f5f4) -->
-    <!-- Application Structure Plan: A 4-tier interactive dashboard. 
-         1. Executive Summary: Highlights the brand's growth since 2021 and its 7-store footprint.
-         2. Location Intelligence Dashboard: The core feature. A dynamic, tabbed interface utilizing the EXACT addresses provided in the screenshots. This prevents a massive wall of text and allows stakeholders to click through each specific store (Bellandur, Kalyan, etc.) to see hyper-local demographics, competitors, and tactical opportunities.
-         3. Macro Market Positioning: A Chart.js radar chart visualizing Solastaa's strengths (premium products like Olaplex/Thalgo) against generic market leaders.
-         4. Strategic Gaps: Actionable, card-based grid highlighting what competitors are doing that Solastaa is missing, derived from the location research. -->
-    <!-- Visualization & Content Choices: 
-         - Location Tabs (HTML/JS): Goal -> Organize/Detail. Allows focused exploration of the 6 verified addresses + 1 general footprint without overwhelming the user.
-         - Radar Chart (Chart.js): Goal -> Compare. Maps Solastaa vs Competitors across 6 operational metrics. NO SVG used. 
-         - Metric Bars (HTML/CSS): Goal -> Inform. Visualizes "Competitive Intensity" inside the location tabs to instantly communicate market threat levels.
-         - Gap Cards (CSS Grid): Goal -> Actionable Insight. Uses hover states to draw attention to critical business recommendations. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    
     <style>
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -27,7 +14,6 @@
             color: #2d2a26;
         }
         
-        /* Required Chart Container Styling */
         .chart-container {
             position: relative;
             width: 100%;
@@ -44,7 +30,6 @@
             }
         }
 
-        /* Interactive Element Styling */
         .tab-btn {
             transition: all 0.2s ease-in-out;
             border-left: 4px solid transparent;
@@ -88,7 +73,6 @@
 </head>
 <body class="antialiased selection:bg-[#b8905d] selection:text-white">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-[#fcfaf8]/95 backdrop-blur-sm border-b border-stone-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -96,17 +80,18 @@
                     <span class="text-2xl text-[#b8905d]">&#10022;</span>
                     <span class="font-bold text-xl tracking-widest text-stone-800 uppercase">Solastaa</span>
                 </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#overview" class="text-stone-600 hover:text-[#b8905d] px-3 py-2 text-sm font-medium transition-colors">Overview</a>
-                    <a href="#locations" class="text-stone-600 hover:text-[#b8905d] px-3 py-2 text-sm font-medium transition-colors">Location Intelligence</a>
-                    <a href="#landscape" class="text-stone-600 hover:text-[#b8905d] px-3 py-2 text-sm font-medium transition-colors">Market Positioning</a>
-                    <a href="#gaps" class="text-stone-600 hover:text-[#b8905d] px-3 py-2 text-sm font-medium transition-colors">Strategic Gaps</a>
+                <div class="hidden md:flex space-x-4 lg:space-x-6 overflow-x-auto">
+                    <a href="#overview" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Overview</a>
+                    <a href="#locations" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Location Intel</a>
+                    <a href="#landscape" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Market</a>
+                    <a href="#gaps" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Gaps</a>
+                    <a href="#expansion" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Expansion</a>
+                    <a href="#analytics" class="text-stone-600 hover:text-[#b8905d] px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Analytics</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Header -->
     <header class="pt-28 pb-16 bg-stone-100 border-b border-stone-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl md:text-5xl font-extrabold text-stone-800 tracking-tight mb-4">Store-by-Store Competitive Analysis</h1>
@@ -118,7 +103,6 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
 
-        <!-- Executive Overview -->
         <section id="overview" class="scroll-mt-24">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 bg-white p-8 rounded-xl shadow-sm border border-stone-100">
@@ -142,7 +126,6 @@
             </div>
         </section>
 
-        <!-- Location Intelligence Dashboard -->
         <section id="locations" class="scroll-mt-24">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-stone-800 mb-2">Hyper-Local Store Intelligence</h2>
@@ -151,7 +134,6 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm">
                 
-                <!-- Tab Navigation -->
                 <div class="lg:col-span-4 bg-stone-50 border-r border-stone-200 flex flex-col h-[600px] overflow-y-auto">
                     
                     <div class="p-3 bg-stone-200 font-bold text-stone-600 text-xs uppercase tracking-widest sticky top-0 z-10">
@@ -180,22 +162,19 @@
                         Varap - Antilia
                     </button>
                     
-                    <!-- <div class="p-3 bg-stone-200 font-bold text-stone-600 text-xs uppercase tracking-widest sticky top-0 z-10">
+                    <div class="p-3 bg-stone-200 font-bold text-stone-600 text-xs uppercase tracking-widest sticky top-0 z-10">
                         &#128205; Network
                     </div>
                     <button class="tab-btn w-full text-left px-5 py-4 font-semibold text-stone-800" onclick="loadLocation('general', this)">
                         7th Store / Network Wide
-                    </button> -->
+                    </button>
                 </div>
 
-                <!-- Content Display Area -->
                 <div class="lg:col-span-8 p-6 md:p-10 h-auto min-h-[600px] bg-white relative" id="location-content">
-                    <!-- Dynamic content injected here via JS -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Market Positioning Chart -->
         <section id="landscape" class="scroll-mt-24">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-stone-800 mb-2">Macro Market Positioning</h2>
@@ -209,7 +188,7 @@
                         Solastaa holds a significant advantage in <strong>Product Premiumness</strong> due to its brand associations (Thalgo, Olaplex) and strong <strong>Franchise Support</strong>. 
                     </p>
                     <p class="text-stone-600 leading-relaxed">
-                        However, the radar analysis reveals vulnerabilities in <strong>Digital Ecosystem</strong> (app booking, wallet tech) and <strong>Footfall Conversion</strong> tactics compared to highly aggressive legacy chains. Closing these gaps is crucial for maximizing ROI on the prime real estate of the 6 locations.
+                        However, the radar analysis reveals vulnerabilities in <strong>Digital Ecosystem</strong> (app booking, wallet tech) and <strong>Footfall Conversion</strong> tactics compared to highly aggressive legacy chains. Closing these gaps is crucial for maximizing ROI on the prime real estate of the 7 locations.
                     </p>
                 </div>
                 <div class="chart-container">
@@ -218,16 +197,13 @@
             </div>
         </section>
 
-        <!-- Strategic Gaps & Recommendations -->
-        <section id="gaps" class="scroll-mt-24 pb-24">
+        <section id="gaps" class="scroll-mt-24">
             <div class="mb-10 text-center">
                 <h2 class="text-3xl font-extrabold text-stone-800 mb-3">Strategic Gaps: What We Are Missing</h2>
                 <p class="text-stone-600 text-lg max-w-2xl mx-auto">Based on the 6-location analysis, here are the exact competitive tactics market leaders are using that Solastaa must adopt to protect its market share.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Gap 1 -->
                 <div class="gap-card bg-white p-8 rounded-xl border border-stone-200 border-t-4 border-t-[#b8905d]">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">&#128241;</span>
@@ -238,55 +214,131 @@
                     </p>
                     <div class="bg-stone-50 p-4 rounded-lg">
                         <h4 class="text-[#b8905d] font-bold text-sm uppercase mb-1">Solastaa Action</h4>
-                        <p class="text-stone-700 text-sm">Replace standard web-forms with a dedicated Solastaa App or WhatsApp Bot featuring a "Solastaa VIP Wallet" and tier-based memberships.</p>
+                        <p class="text-stone-700 text-sm">Replace standard web-forms with a dedicated App or WhatsApp Bot featuring a "Solastaa VIP Wallet".</p>
                     </div>
                 </div>
 
-                <!-- Gap 2 -->
                 <div class="gap-card bg-white p-8 rounded-xl border border-stone-200 border-t-4 border-t-[#b8905d]">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">&#128188;</span>
                         <h3 class="text-xl font-bold text-stone-800">Corporate & Campus Tie-Ups</h3>
                     </div>
                     <p class="text-stone-600 mb-5 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
-                        <strong>The Competition:</strong> In locations like Bellandur (Tech) and MS Ramaiah (Campus), competitors have direct HR/Admin tie-ups offering standard 15% discounts upon showing a corporate/student ID card.
+                        <strong>The Competition:</strong> In locations like Bellandur (Tech) and MS Ramaiah (Campus), competitors have direct HR/Admin tie-ups offering standard 15% discounts upon showing ID.
                     </p>
                     <div class="bg-stone-50 p-4 rounded-lg">
                         <h4 class="text-[#b8905d] font-bold text-sm uppercase mb-1">Solastaa Action</h4>
-                        <p class="text-stone-700 text-sm">Launch targeted B2B outreach in Bellandur (for Tech Parks) and specialized combo-menus in MS Ramaiah specifically branded for students/faculty.</p>
+                        <p class="text-stone-700 text-sm">Launch targeted B2B outreach in tech parks and specialized combo-menus near campuses.</p>
                     </div>
                 </div>
 
-                <!-- Gap 3 -->
                 <div class="gap-card bg-white p-8 rounded-xl border border-stone-200 border-t-4 border-t-[#b8905d]">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">&#128269;</span>
                         <h3 class="text-xl font-bold text-stone-800">AI Diagnostic Consultations</h3>
                     </div>
                     <p class="text-stone-600 mb-5 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
-                        <strong>The Competition:</strong> Premium salons use digital scalp cameras and skin hydration analyzers during the initial consultation to empirically prove the need for high-end treatments.
+                        <strong>The Competition:</strong> Premium salons use digital scalp cameras and skin hydration analyzers to empirically prove the need for high-end treatments.
                     </p>
                     <div class="bg-stone-50 p-4 rounded-lg">
                         <h4 class="text-[#b8905d] font-bold text-sm uppercase mb-1">Solastaa Action</h4>
-                        <p class="text-stone-700 text-sm">Given Solastaa's premium partners (Thalgo, Olaplex), deploying tablet-based skin/hair analyzers will drastically increase retail product sales and trust.</p>
+                        <p class="text-stone-700 text-sm">Deploy tablet-based skin/hair analyzers to validate the necessity of Thalgo and Olaplex treatments.</p>
                     </div>
                 </div>
 
-                <!-- Gap 4 -->
                 <div class="gap-card bg-white p-8 rounded-xl border border-stone-200 border-t-4 border-t-[#b8905d]">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">&#128205;</span>
                         <h3 class="text-xl font-bold text-stone-800">Hyper-Local SEO Dominance</h3>
                     </div>
                     <p class="text-stone-600 mb-5 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
-                        <strong>The Competition:</strong> Local giants heavily optimize their Google My Business pages with daily salon photos, respond to 100% of reviews, and run 3km radius geo-fenced Instagram ads.
+                        <strong>The Competition:</strong> Local giants heavily optimize Google My Business, respond to 100% of reviews, and run 3km radius geo-fenced Instagram ads.
                     </p>
                     <div class="bg-stone-50 p-4 rounded-lg">
                         <h4 class="text-[#b8905d] font-bold text-sm uppercase mb-1">Solastaa Action</h4>
-                        <p class="text-stone-700 text-sm">Provide franchisees with a strict local-SEO playbook. General brand marketing isn't enough; ads must say "Premium Salon near Ghodbunder Road" to drive actual footfalls.</p>
+                        <p class="text-stone-700 text-sm">Provide franchisees with a strict local-SEO playbook. General marketing isn't enough; hyper-target the exact pincodes.</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <section id="expansion" class="scroll-mt-24">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-stone-800 mb-3">Operational Expansion & Client Retention</h2>
+                <p class="text-stone-600 text-lg max-w-3xl">Strategic methods to increase lifetime customer value, secure franchise relations, and capture vital market data.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:border-[#b8905d] transition-colors">
+                    <div class="w-10 h-10 bg-[#b8905d]/10 rounded-lg flex items-center justify-center mb-4 text-xl">&#128197;</div>
+                    <h3 class="font-bold text-stone-800 mb-2">Proactive Pre-Booking</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-3">Don't wait for the client to remember. Train staff to secure the next appointment before the client leaves the chair.</p>
+                    <blockquote class="text-xs italic text-stone-500 border-l-2 border-[#b8905d] pl-3">"Your color is going to need a refresh in about 8 weeks. Want me to grab you a slot now so you're not scrambling later?"</blockquote>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:border-[#b8905d] transition-colors">
+                    <div class="w-10 h-10 bg-[#b8905d]/10 rounded-lg flex items-center justify-center mb-4 text-xl">&#10084;&#65039;</div>
+                    <h3 class="font-bold text-stone-800 mb-2">Hyper-Personalization</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">Clients must never feel like just a number. Utilize CRM notes to remember coffee preferences, family events, and past service nuances to build an emotional connection.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:border-[#b8905d] transition-colors">
+                    <div class="w-10 h-10 bg-[#b8905d]/10 rounded-lg flex items-center justify-center mb-4 text-xl">&#128257;</div>
+                    <h3 class="font-bold text-stone-800 mb-2">Closed-Loop Loyalty</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">Establish a dual-sided loyalty program: reward points for regular store revisits, and high-value incentives (e.g., free premium hair spa) for successful client referrals.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:border-[#b8905d] transition-colors">
+                    <div class="w-10 h-10 bg-[#b8905d]/10 rounded-lg flex items-center justify-center mb-4 text-xl">&#127979;</div>
+                    <h3 class="font-bold text-stone-800 mb-2">Solastaa Academy</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">Implement a centralized approval process for all franchise staff. They play a massive role in relationship management; the brand cannot risk quality dilution across different owner networks.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:border-[#b8905d] transition-colors">
+                    <div class="w-10 h-10 bg-[#b8905d]/10 rounded-lg flex items-center justify-center mb-4 text-xl">&#129668;</div>
+                    <h3 class="font-bold text-stone-800 mb-2">Data Lead Magnets</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">Deploy digital lead magnets (e.g., "Take our 2-min Hair Porosity Quiz to get 15% off"). This secures the data edge required to run highly targeted, cost-effective marketing in a modern economy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analytics" class="scroll-mt-24 pb-24">
+            <div class="bg-[#2d2a26] rounded-2xl overflow-hidden shadow-lg border border-stone-800">
+                <div class="p-8 md:p-10 border-b border-stone-700">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-[#b8905d] text-2xl">&#128202;</span>
+                        <h2 class="text-3xl font-extrabold text-white">Analytical Edge: Franchisee Health Scorecard</h2>
+                    </div>
+                    <p class="text-stone-400 text-lg max-w-3xl">Moving beyond basic top-line "Total Revenue" tracking. To accurately measure operational success and franchise viability, we monitor these three vital KPIs.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-700 bg-stone-900">
+                    
+                    <div class="p-8 hover:bg-stone-800/50 transition-colors">
+                        <div class="text-[#b8905d] font-bold text-sm uppercase tracking-wider mb-2">KPI 01</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Client Revisit Rate</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Measures the percentage of first-time walk-ins that return within 60 days. A critical indicator of whether the franchisee is successfully building a loyal local community or simply burning through one-time foot traffic.
+                        </p>
+                    </div>
+
+                    <div class="p-8 hover:bg-stone-800/50 transition-colors">
+                        <div class="text-[#b8905d] font-bold text-sm uppercase tracking-wider mb-2">KPI 02</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Product-to-Service Ratio</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Tracks the volume of retail products sold versus standard services rendered. High-margin retail lines (Olaplex, Thalgo) are key to profitability. Low ratios indicate a failure in staff upselling techniques during consultations.
+                        </p>
+                    </div>
+
+                    <div class="p-8 hover:bg-stone-800/50 transition-colors">
+                        <div class="text-[#b8905d] font-bold text-sm uppercase tracking-wider mb-2">KPI 03</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Chair Utilization Rate</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Calculates the percentage of available chair hours actively billed. Identifying dead zones (e.g., Tuesday mornings) acts as a direct trigger to deploy <strong>Dynamic Pricing</strong> or off-peak promotions to maximize real estate ROI.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -299,9 +351,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
     <script>
-        // Store location data based EXACTLY on provided images
         const locations = {
             bellandur: {
                 title: "Bellandur Store",
@@ -357,20 +407,18 @@
                 tactic: "Competitors capture walk-ins through aggressive storefront signage and low entry-pricing.",
                 opportunity: "Use the heavy Dmart footfall to your advantage. Offer a free 'AI Hair/Skin Consultation' outside the store to draw walk-ins, then convert them to premium Solastaa services."
             },
-            // general: {
-            //     title: "7th Store / Network Wide Alignment",
-            //     address: "Network level analysis representing the aggregated strategy across all 7 Solastaa footprints.",
-            //     demographics: "A blended demographic spanning hyper-premium urbanites to aspirational suburban families.",
-            //     competitors: ["National Salon Chains (Macro view)"],
-            //     intensity: 85,
-            //     tactic: "National chains utilize unified booking apps, centralized CRM systems, and nationwide influencer campaigns.",
-            //     opportunity: "Ensure brand consistency across all 7 stores while allowing franchisees hyper-local marketing budgets. Standardize the IT Configuration and 'Owner Training' mentioned in the franchise brochure to maintain quality."
-            // }
+            general: {
+                title: "7th Store / Network Wide Alignment",
+                address: "Network level analysis representing the aggregated strategy across all 7 Solastaa footprints.",
+                demographics: "A blended demographic spanning hyper-premium urbanites to aspirational suburban families.",
+                competitors: ["National Salon Chains (Macro view)"],
+                intensity: 85,
+                tactic: "National chains utilize unified booking apps, centralized CRM systems, and nationwide influencer campaigns.",
+                opportunity: "Ensure brand consistency across all 7 stores while allowing franchisees hyper-local marketing budgets. Standardize the IT Configuration and 'Owner Training' mentioned in the franchise brochure to maintain quality."
+            }
         };
 
-        // Function to render location data
         function loadLocation(locId, btnElement) {
-            // Update active button state
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -379,17 +427,14 @@
             const data = locations[locId];
             const contentDiv = document.getElementById('location-content');
             
-            // Format competitors into tags
             const compTags = data.competitors.map(c => 
                 `<span class="inline-block bg-stone-200 text-stone-700 text-xs font-bold px-3 py-1 rounded-full mr-2 mb-2">${c}</span>`
             ).join('');
 
-            // Determine intensity color
             let intensityColor = 'bg-emerald-500';
             if(data.intensity >= 80) intensityColor = 'bg-amber-500';
             if(data.intensity >= 90) intensityColor = 'bg-rose-500';
 
-            // HTML Template to inject
             const html = `
                 <div class="fade-in">
                     <div class="flex justify-between items-start mb-6">
@@ -444,7 +489,6 @@
             contentDiv.innerHTML = html;
         }
 
-        // Initialize Charts
         function initRadarChart() {
             const ctx = document.getElementById('radarChart').getContext('2d');
             
@@ -519,13 +563,9 @@
             });
         }
 
-        // Run on load
         document.addEventListener('DOMContentLoaded', () => {
-            // Load the first tab by default
             const firstTab = document.querySelector('.tab-btn');
             loadLocation('bellandur', firstTab);
-            
-            // Render Chart
             initRadarChart();
         });
     </script>
